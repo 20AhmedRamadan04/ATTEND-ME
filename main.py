@@ -8,15 +8,18 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.filechooser import FileChooserListView
 from kivy.core.window import Window
-
+from kivy import platform
 
 
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
-        import ssl
-        ssl._create_default_https_context = ssl._create_unverified_context
-        
+        # import ssl
+        # ssl._create_default_https_context = ssl._create_unverified_context
+        if platform == "android" :
+            from android.permissions import Permission, request_permissions 
+            request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET])
+
         self.cols = 1
         self.add_widget(Label(text = "---------- MITU AI DEPARTMENT ATTENDANCE ----------" , color = "white" , bold = True , font_size = 30))
         self.add_widget(Label(text = "Full Name: "))
