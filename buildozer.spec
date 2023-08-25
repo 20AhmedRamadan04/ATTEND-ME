@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = ATTEND_ME
+title = ATTEND ME
 # (str) Package name
 package.name = ATTENDANCE
 
