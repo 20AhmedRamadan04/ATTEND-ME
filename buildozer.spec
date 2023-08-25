@@ -1,10 +1,9 @@
 [app]
 
 # (str) Title of your application
-title = My Application
-
+title = ATTEND_ME
 # (str) Package name
-package.name = myapp
+package.name = ATTENDANCE
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -37,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+requirements = python3,kivy,kivymd
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
