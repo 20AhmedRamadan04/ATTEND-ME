@@ -22,6 +22,15 @@ class ATT_1(GridLayout) :
             from android.permissions import Permission, request_permissions 
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET])
             
+        import pandas as pd
+            Data = pd.read_csv("https://raw.githubusercontent.com/20AhmedRamadan04/Pro/main/AI-(2).csv")
+            Data = Data.dropna()
+            self.add_widget(Label(text = f"[+] Success Read Dataset " , color = "green" , bold = True , font_size = 25))
+            self.Names = list(Data.iloc[:,0].values)
+            self.Codes = list(Data.iloc[:,1].values)
+            self.Sections = list(Data.iloc[:,2].values)
+            self.Year = list(Data.iloc[:,3].values)    
+        
         self.cols = 1
         self.add_widget(Label(text = "---------- MITU AI DEPARTMENT ATTENDANCE ----------" , color = "white" , bold = True , font_size = 30))
         self.add_widget(Label(text = "Full Name: "))
@@ -61,14 +70,7 @@ class ATT_1(GridLayout) :
 
     def Submit(self , instance) :
         try :
-            import pandas as pd
-            Data = pd.read_csv("https://raw.githubusercontent.com/20AhmedRamadan04/Pro/main/AI-(2).csv")
-            Data = Data.dropna()
-            self.add_widget(Label(text = f"[+] Success Read Dataset " , color = "green" , bold = True , font_size = 25))
-            self.Names = list(Data.iloc[:,0].values)
-            self.Codes = list(Data.iloc[:,1].values)
-            self.Sections = list(Data.iloc[:,2].values)
-            self.Year = list(Data.iloc[:,3].values)
+            
 
             if str(self.Full_Name.text) in str(self.Names) and str(self.Student_Code.text) in str(self.Codes) and str(self.Student_Section.text) in str(self.Sections) and str(self.Study_Year.text) in str(self.Year) :
                 if len(self.Full_Name.text) in range(12 , 54) and len(self.Student_Code.text) == 6 and len(self.Student_Section.text) == 1 and len(self.Study_Year.text) == 1 :
