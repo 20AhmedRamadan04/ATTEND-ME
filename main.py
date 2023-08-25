@@ -9,6 +9,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.filechooser import FileChooserListView
 from kivy.core.window import Window
 from kivy import platform
+import pandas as pd
 
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
@@ -60,7 +61,6 @@ class ATT_1(GridLayout) :
 
     def Submit(self , instance) :
         try :
-            import pandas as pd
             Data = pd.read_csv("https://raw.githubusercontent.com/20AhmedRamadan04/Pro/main/AI-(2).csv")
             Data = Data.dropna()
             self.add_widget(Label(text = f"[+] Success Read Dataset " , color = "green" , bold = True , font_size = 25))
