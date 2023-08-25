@@ -14,8 +14,8 @@ from kivy import platform
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
-        # import ssl
-        # ssl._create_default_https_context = ssl._create_unverified_context
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
         if platform == "android" :
             from android.permissions import Permission, request_permissions 
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET])
@@ -70,8 +70,8 @@ class ATT_1(GridLayout) :
 
         if str(self.Full_Name.text) in str(self.Names) and str(self.Student_Code.text) in str(self.Codes) and str(self.Student_Section.text) in str(self.Sections) and str(self.Study_Year.text) in str(self.Year) :
             if len(self.Full_Name.text) in range(12 , 54) and len(self.Student_Code.text) == 6 and len(self.Student_Section.text) == 1 and len(self.Study_Year.text) == 1 : 
-                # self.file = open("Attendance.txt" , "a")
-                # self.file.write(f"\nFull Name: {self.Full_Name.text}\nStudent Code: {self.Student_Code.text}\nSection: {self.Student_Section.text}\nYear: {self.Study_Year.text}\n")
+                self.file = open("Attendance.txt" , "a")
+                self.file.write(f"\nFull Name: {self.Full_Name.text}\nStudent Code: {self.Student_Code.text}\nSection: {self.Student_Section.text}\nYear: {self.Study_Year.text}\n")
                 self.add_widget(Label(text = "---------- Your Attendance Has Been Successfully Registered :) ----------\nThank You !" , color = "green" , bold = True , font_size = 25))
             else :
                 self.add_widget(Label(text = "This Data Does'nt Exist, Please Try Again !" , color = "red" , bold = True , font_size = 25)) 
