@@ -20,7 +20,7 @@ class ATT_1(GridLayout) :
         
         if platform == "android" :
             from android.permissions import Permission, request_permissions 
-            request_permissions([Permission.READ_INTERNAL_STORAGE, Permission.WRITE_INTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET])
+            request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET])
             
         
         
