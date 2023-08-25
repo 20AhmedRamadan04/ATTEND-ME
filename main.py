@@ -9,12 +9,12 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.filechooser import FileChooserListView
 from kivy.core.window import Window
 from kivy import platform
-import pandas as pd
 
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
-        
+        import pandas as pd
+
         import ssl
         ssl._create_default_https_context = ssl._create_unverified_context
         
