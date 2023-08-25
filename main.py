@@ -13,7 +13,7 @@ from kivy import platform
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
-        import pandas as pd
+        
 
         import ssl
         ssl._create_default_https_context = ssl._create_unverified_context
@@ -61,6 +61,7 @@ class ATT_1(GridLayout) :
 
     def Submit(self , instance) :
         try :
+            import pandas as pd
             Data = pd.read_csv("https://raw.githubusercontent.com/20AhmedRamadan04/Pro/main/AI-(2).csv")
             Data = Data.dropna()
             self.add_widget(Label(text = f"[+] Success Read Dataset " , color = "green" , bold = True , font_size = 25))
