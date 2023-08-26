@@ -15,12 +15,12 @@ class ATT_1(GridLayout) :
         super(ATT_1 , self).__init__()
         
 
-        import ssl
-        ssl._create_default_https_context = ssl._create_unverified_context
         
-       # if platform == "android" :
-           # from android.permissions import Permission, request_permissions 
-            #request_permissions([Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
+        ssl._create_default_https_context = ssl._create_unverified_context
+         
+        if platform == "android" :
+           from android.permissions import Permission, request_permissions 
+           request_permissions([Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
             
         
         
