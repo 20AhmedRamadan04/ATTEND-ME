@@ -59,7 +59,7 @@ orientation = portrait
 #
 
 #
-author = © Copyright AHMED RAMADAN
+#author = © Copyright AHMED RAMADAN
 
 # change the major version of python used by the app
 osx.python_version = 3.7.6
