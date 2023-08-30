@@ -11,8 +11,9 @@ from kivy.core.window import Window
 from kivy import platform
 import MySQLdb as mdb
 import datetime 
-import ssl
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 
@@ -22,7 +23,7 @@ class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
         
-        ssl._create_default_https_context = ssl._create_unverified_context
+        
          
         if platform == "android" :
            from android.permissions import Permission, request_permissions 
