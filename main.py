@@ -92,6 +92,8 @@
             
           
             
+import os
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -110,18 +112,29 @@ class NameInputLayout(BoxLayout):
         self.text_input = TextInput(multiline=False)
         self.add_widget(self.text_input)
         
+        self.file_label = Label(text="Enter file path:")
+        self.add_widget(self.file_label)
+        
+        self.file_input = TextInput(multiline=False)
+        self.add_widget(self.file_input)
+        
         self.save_button = Button(text="Save", on_press=self.save_name)
         self.add_widget(self.save_button)
     
     def save_name(self, instance):
         name = self.text_input.text
-        file_path = "names.txt"  # Modify the file path if desired
+        file_path = self.file_input.text
+        
+        if not os.path.exists(file_path):
+            self.label.text = "Invalid file path!"
+            return
         
         with open(file_path, "a") as file:
             file.write(name + "\n")
         
         self.label.text = "Name saved successfully!"
         self.text_input.text = ""
+        self.file_input.text = ""
 
 
 class NameApp(App):
