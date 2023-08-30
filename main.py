@@ -11,6 +11,7 @@ from kivy.core.window import Window
 from kivy import platform
 import MySQLdb as mdb
 import datetime 
+import ssl
 
 
 
@@ -21,8 +22,6 @@ class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
         
-
-        import ssl
         ssl._create_default_https_context = ssl._create_unverified_context
          
         if platform == "android" :
@@ -113,10 +112,6 @@ class ATT_2(App) :
                 Window.clearcolor = (0.5 , 0 , 0 , 1)
                 return ATT_1()
 if __name__ == "__main__" :
-    try:
-        ATT_2().run()
-    except Exception as e:      
-        print(f"Error >> {str(e)}")
-                                 
+            ATT_2().run()                                                                         
             
             
