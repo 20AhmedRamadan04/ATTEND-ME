@@ -12,22 +12,16 @@ from kivy import platform
 import MySQLdb as mdb
 import datetime 
 
-
-
-
-
-
 class ATT_1(GridLayout) :
     def __init__(self, **kwargs):
         super(ATT_1 , self).__init__()
-        
-
-        # import ssl
-        # ssl._create_default_https_context = ssl._create_unverified_context
+    
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
          
-        # if platform == "android" :
-        #    from android.permissions import Permission, request_permissions 
-        #    request_permissions([Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
+        if platform == "android" :
+           from android.permissions import Permission, request_permissions 
+           request_permissions([Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
             
         self.DBNAME = "sql9643250"
         self.DBHOST = "sql9.freemysqlhosting.net"
@@ -114,5 +108,3 @@ class ATT_2(App) :
                 return ATT_1()
 if __name__ == "__main__" :
             ATT_2().run()                                                                         
-            
-            
