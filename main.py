@@ -12,10 +12,7 @@ from kivy import platform
 import MySQLdb as mdb
 import datetime 
 
-DBNAME = "sql9643250"
-DBHOST = "sql9.freemysqlhosting.net"
-DBPASS = "a3dwbJ4Vm5"
-DBUSER = "sql9643250"
+
 
 
 
@@ -25,14 +22,17 @@ class ATT_1(GridLayout) :
         super(ATT_1 , self).__init__()
         
 
-        # import ssl
-        # ssl._create_default_https_context = ssl._create_unverified_context
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
          
         if platform == "android" :
            from android.permissions import Permission, request_permissions 
            request_permissions([Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
             
-        
+        self.DBNAME = "sql9643250"
+        self.DBHOST = "sql9.freemysqlhosting.net"
+        self.DBPASS = "a3dwbJ4Vm5"
+        self.DBUSER = "sql9643250"
         self.date_time = self.date_time = str(datetime.datetime.now())
         self.cols = 1
         self.add_widget(Label(text = "---------- MITU AI DEPARTMENT ATTENDANCE ----------" , color = "white" , bold = True , font_size = 30))
@@ -88,7 +88,7 @@ class ATT_1(GridLayout) :
                             self.section = str(self.Student_Section.text)
                             self.year = str(self.Study_Year.text)
 
-                            self.db = mdb.connect(DBHOST, DBUSER, DBPASS, DBNAME)
+                            self.db = mdb.connect(self.DBHOST, self.DBUSER, self.DBPASS, self.DBNAME)
                             self.cur = self.db.cursor()
                             self.add_widget(Label(text = "Successfully Conected" , color = "blue" , bold = True , font_size = 25))
                             
