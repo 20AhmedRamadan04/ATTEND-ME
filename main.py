@@ -113,6 +113,10 @@ class ATT_2(App) :
                 Window.clearcolor = (0.5 , 0 , 0 , 1)
                 return ATT_1()
 if __name__ == "__main__" :
-            ATT_2().run()                                                                         
+    try:
+        ATT_2().run()
+    except Exception as e:      
+        print(f"Error >> {str(e)}")
+                                 
             
             
