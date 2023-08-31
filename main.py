@@ -27,6 +27,14 @@ class ATT_1(GridLayout) :
         self.DBHOST = "sql9.freemysqlhosting.net"
         self.DBPASS = "a3dwbJ4Vm5"
         self.DBUSER = "sql9643250"
+
+        try :
+             self.db = mdb.connect(self.DBHOST, self.DBUSER, self.DBPASS, self.DBNAME)
+             self.cur = self.db.cursor()
+             self.add_widget(Label(text = "Successfully Conected" , color = "blue" , bold = True , font_size = 25))
+        except Exception as e:
+             self.add_widget(Label(text = f"Error >> {str(e)}" , color = "red" , bold = True , font_size = 25))
+            
         self.date_time = self.date_time = str(datetime.datetime.now())
         self.cols = 1
         self.add_widget(Label(text = "---------- MITU AI DEPARTMENT ATTENDANCE ----------" , color = "white" , bold = True , font_size = 30))
@@ -74,17 +82,17 @@ class ATT_1(GridLayout) :
                 self.Year = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
                 if str(self.Full_Name.text) in str(self.Names) and str(self.Student_Code.text) in str(self.Codes) and str(self.Student_Section.text) in str(self.Sections) and str(self.Study_Year.text) in str(self.Year) :
                     if len(self.Full_Name.text) in range(12 , 54) and len(self.Student_Code.text) == 6 and len(self.Student_Section.text) == 1 and len(self.Study_Year.text) == 1 :
-                        
+                        self.date_time = str(datetime.datetime.now())
+                        self.name = str(self.Full_Name.text)
+                        self.code = str(self.Student_Code.text)
+                        self.section = str(self.Student_Section.text)
+                        self.year = str(self.Study_Year.text)
                         try :
-                            self.date_time = str(datetime.datetime.now())
-                            self.name = str(self.Full_Name.text)
-                            self.code = str(self.Student_Code.text)
-                            self.section = str(self.Student_Section.text)
-                            self.year = str(self.Study_Year.text)
 
-                            self.db = mdb.connect(self.DBHOST, self.DBUSER, self.DBPASS, self.DBNAME)
-                            self.cur = self.db.cursor()
-                            self.add_widget(Label(text = "Successfully Conected" , color = "blue" , bold = True , font_size = 25))
+
+                            # self.db = mdb.connect(self.DBHOST, self.DBUSER, self.DBPASS, self.DBNAME)
+                            # self.cur = self.db.cursor()
+                            # self.add_widget(Label(text = "Successfully Conected" , color = "blue" , bold = True , font_size = 25))
                             
                             self.insert =  "INSERT INTO Data (date_time, name, code, section, year) VALUES (%s, %s, %s, %s, %s)" 
                             self.values = (self.date_time, self.name, self.code, self.section, self.year)
